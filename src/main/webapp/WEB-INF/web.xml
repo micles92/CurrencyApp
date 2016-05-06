@@ -6,7 +6,6 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
 	id="SygnityTestApp" version="2.5">
 
-  
   <welcome-file-list>
     <welcome-file>index.xhtml</welcome-file>
   </welcome-file-list>
@@ -46,5 +45,4 @@
 	    	classpath:spring/applicationContext.xml
 	    </param-value>
   </context-param>
-	
 </web-app>
