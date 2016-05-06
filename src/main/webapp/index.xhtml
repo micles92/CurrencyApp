@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/template.xhtml"
+                xmlns:p="http://primefaces.org/ui" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://java.sun.com/jsf/html ">
+
+    <ui:define name="content">
+        <!--TODO:-->
+        <!--1. <label> pobierajacy zmienna z properties - wyswietla tekst z polskimi znakami-->
+        <!--2. <input text> ktory przyjmuje rok i wypelnia zmienna z backing bean'ie -->
+        <!--3. <commandButton> ktory wykonuje POST na tym formularzu i odswieza tabele z wynikami-->
+
+        <h:form id="form">
+            <p:dataTable id="bookTable" var="book" value="#{testBookController.books}" selection="#{testBookController.selectedBook}" selectionMode="single"
+                         rowKey="#{book.id}" paginator="true" rows="10" >
+                <p:ajax event="rowSelect" listener="#{testBookController.onRowSelect}"
+                        update=":form:authorTable "/>
+
+                <p:column headerText="ID">
+                    <h:outputText value="#{book.id}"/>
+                </p:column>
+                <p:column headerText="Title">
+                    <h:outputText value="#{book.title}"/>
+                </p:column>
+                <p:column headerText="Year">
+                    <h:outputText value="#{book.year}"/>
+                </p:column>
+            </p:dataTable>
+
+            <p:dataTable id="authorTable" var="author" value="#{testBookController.authors}">
+                <p:column headerText="Authors">
+                    <h:outputText value="#{author.id}"/>
+                    -
+                    <h:outputText value="#{author.fullname}"/>
+                </p:column>
+            </p:dataTable>
+
+            <p:spacer height="20px"/>
+
+            <p:commandButton id="button1" value="Show Book Details" update=":form2:dialog" oncomplete="bookDialog.show();" />
+            <p:commandButton id="button2" update=":growl:growl" actionListener="#{testBookController.showInGrowl}" value="Show Book Details in Growl"/>
+
+        </h:form>
+        <h:form id="form2">
+            <p:dialog id="dialog" showEffect="bounce" hideEffect="slide" header="Book Details: #{testBookController.selectedBook.title}" modal="false"  widgetVar="bookDialog" resizable="false"
+                >
+                BOOK DETAILS:
+
+                <h:outputText value="#{testBookController.selectionText}"/>
+            </p:dialog>
+
+
+        </h:form>
+    </ui:define>
+</ui:composition>
