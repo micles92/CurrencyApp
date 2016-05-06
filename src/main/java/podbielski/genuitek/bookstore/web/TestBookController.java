@@ -26,9 +26,15 @@ import java.util.List;
 public class TestBookController extends BookController {
 
 
+	@Autowired
+	private TestBookService testBookService;
+
 	//TODO implemnetacja metody
-	public List<Book> getAllOlderThanYear(){
-		return null;
+	public List<Book> getAllOlderThanYearKSI(){
+		if(this.getYear()!=0) {
+			return testBookService.findAllOlderThanYear(this.getYear());
+		}
+		return this.getBooks();
 	}
 
 

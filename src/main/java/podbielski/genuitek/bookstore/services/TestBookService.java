@@ -10,6 +10,7 @@ import podbielski.genuitek.bookstore.domain.Book;
 import podbielski.genuitek.bookstore.repositories.BookRepository;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,13 +20,24 @@ import java.util.List;
 
 @Service(value = "testBookService")
 @Transactional
-public class TestBookService
+public class TestBookService extends BookService
 {
 	@Autowired private BookRepository bookRepository;
 
 
 	public List<Book> findAllBooks() {
 		return bookRepository.findAll();
+	}
+
+
+	public List<Book> findAllOlderThanYear(int year){
+		List<Book> books = new ArrayList<Book>();
+		for(Book book : this.bookRepository.findAll()){
+			if(book.getYear() < year){
+				books.add(book);
+			}
+		}
+		return books;
 	}
 
 	//TODO implmentacja metody filtrujacej po roku
