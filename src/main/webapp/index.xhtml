@@ -15,7 +15,7 @@
         <!--3. <commandButton> ktory wykonuje POST na tym formularzu i odswieza tabele z wynikami-->
 
         <h:form id="form">
-            <p:panel id="allPanel">
+
                 <p:dataTable id="bookTable" var="book" value="#{testBookController.allOlderThanYearKSI}"
                              selection="#{testBookController.selectedBook}" selectionMode="single"
                              rowKey="#{book.id}" paginator="true" rows="10">
@@ -42,7 +42,7 @@
                 </p:dataTable>
 
 
-            </p:panel>
+
 
 
             <p:spacer height="20px"/>
@@ -55,7 +55,7 @@
 
             <p:inputText value="#{testBookController.year}"></p:inputText>
             <p:commandButton value="Find older than year" actionListener="#{testBookController.getAllOlderThanYearKSI}"
-                             update="allPanel"/>
+                             update="bookTable"/>
         </h:form>
         <h:form id="form2">
             <p:dialog id="dialog" showEffect="bounce" hideEffect="slide"
