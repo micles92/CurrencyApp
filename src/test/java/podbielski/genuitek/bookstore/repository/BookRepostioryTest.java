@@ -1,13 +1,10 @@
 package podbielski.genuitek.bookstore.repository;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -43,16 +40,16 @@ public class BookRepostioryTest {
     //TODO JFO
     @Test
     public void testFindAllOrderedByYear() {
-        prepareBooks(10);
-        List<Book> books = bookRepository.findAllOrderedByYear();
-        Assert.assertNotNull(books);
+        prepareBooks(3);
+        List<Book> result = bookRepository.findAllOrderedByYear();
+        Assert.assertNotNull(result);
+        Assert.assertEquals("find all ordered by year", 3, result.size());
 
     }
 
-    //TODO JFO
     @Test
     public void testFindAllOrderedByTitle() {
-        prepareBooks(40);
+        prepareBooks(3);
         List<Book> books = bookRepository.findAllOrderedByTitle();
         Assert.assertNotNull(books);
     }
@@ -63,6 +60,15 @@ public class BookRepostioryTest {
         prepareBooks(3);
         List<Book> books = bookRepository.findOlderThanYear(2004);
         Assert.assertNotNull(books);
+    }
+
+    @Test
+    public void testFindByTitle() {
+        prepareBooks(3);
+        List<Book> result = bookRepository.findLatestByTitleWithJPQLQuery("3");
+        Assert.assertNotNull(result);
+        Assert.assertEquals("find by title", 1, result.size());
+
     }
 
     private void prepareBooks(int count) {

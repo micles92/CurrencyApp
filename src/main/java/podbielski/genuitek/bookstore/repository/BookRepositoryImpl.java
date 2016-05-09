@@ -5,13 +5,14 @@ import podbielski.genuitek.bookstore.domain.Book;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
 /**
  * Created by jfonferko on 2016-05-09.
  */
-public abstract class BookRepositoryImpl implements BookRepository {
+public class BookRepositoryImpl implements BookRepositoryCustom {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -26,6 +27,15 @@ public abstract class BookRepositoryImpl implements BookRepository {
         query.setParameter("book", year);
         return query.getResultList();
     }
+
+    @Override
+    public List<Book> findLatestByTitleWithJPQLQuery(String title) {
+        Query query =
+                entityManager.createNativeQuery("SELECT b FROM Book WHERE b.title like lower(concat('%',:title,'%'))", Book.class);
+        query.setParameter("title", title);
+        return query.getResultList();
+    }
+
 
     @Override
     public List<Book> findAllOrderedByYear() {
