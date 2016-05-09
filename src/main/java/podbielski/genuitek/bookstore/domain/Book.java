@@ -16,7 +16,10 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Book.findOlderThanYear",
                 query = "SELECT b FROM Book b WHERE b.year >= ? ORDER BY b.year"),
-})
+        @NamedQuery(name = "Book.findAllOrderedByYear", query = "SELECT b FROM Book b ORDER BY b.year ASC"),
+        @NamedQuery(name = "Book.findAllOrderedByTitle", query = "SELECT b FROM Book b ORDER BY b.title ASC"),
+
+        })
 public class Book {
 
     @Id
@@ -76,7 +79,7 @@ public class Book {
         this.authors = authors;
     }
 
-    public String toString(){
+    public String toString() {
         return title + ", " + year + ": ";
     }
 
