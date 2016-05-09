@@ -17,7 +17,7 @@
         <h:form id="form">
 
             <p:inputText value="#{bookControllerJFO.year}"></p:inputText>
-            <p:commandButton value="Find older than year" actionListener="#{bookControllerJFO.getAllOlderThanYear}"
+            <p:commandButton value="Find older than year" actionListener="#{bookControllerJFO.filterBooksByYear}"
                              update="bookTable"/>
 
                 <p:dataTable id="bookTable" var="book" value="#{bookControllerJFO.bookTableModel}"

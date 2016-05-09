@@ -12,6 +12,7 @@ import podbielski.genuitek.bookstore.service.AuthorService;
 import podbielski.genuitek.bookstore.service.BookService;
 import podbielski.genuitek.bookstore.web.datatable.BookTableModel;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -28,30 +29,25 @@ import java.util.List;
 public class BookController {
 
 	@Autowired protected BookService bookService;
-
     @Autowired protected AuthorService authorService;
 
-    protected List<Book> books;
-
     protected BookTableModel bookTableModel;
-
     protected List<Author> authors;
-
     protected Book selectedBook;
 
 	//zmienna ustawiająca warunek od roku
     protected int year;
 
-	public int getYear() {
-		return year;
-	}
 
-	public void setYear(int year) {
-		this.year = year;
-	}
-
-
+    // Konstruktor domyslny
     public BookController() {
+    }
+
+    // Inicjalizacja bean'a
+    @PostConstruct
+    public void initBean(){
+        // Poczatkowa wartosc bookTableModel ustawiona na wszystkie ksiazki
+        this.bookTableModel = new BookTableModel(bookService.findAllBooks());
     }
 
 	public List<Author> getAuthors() {
@@ -67,7 +63,15 @@ public class BookController {
     }
 
 	public BookTableModel getBookTableModel() {
-        return new BookTableModel(bookService.findAllBooks());
+        return bookTableModel;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 
     //Methods

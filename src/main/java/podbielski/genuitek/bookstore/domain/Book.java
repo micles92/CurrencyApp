@@ -16,6 +16,7 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Book.findOlderThanYear",
                 query = "SELECT b FROM Book b WHERE b.year >= ? ORDER BY b.year"),
+        //FIXME JFO brak parametrow przekazywanych do zapytan!!!
         @NamedQuery(name = "Book.findAllOrderedByYear", query = "SELECT b FROM Book b ORDER BY b.year ASC"),
         @NamedQuery(name = "Book.findAllOrderedByTitle", query = "SELECT b FROM Book b ORDER BY b.title ASC"),
 

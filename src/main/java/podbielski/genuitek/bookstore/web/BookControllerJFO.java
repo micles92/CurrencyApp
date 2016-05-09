@@ -2,6 +2,7 @@ package podbielski.genuitek.bookstore.web;
 
 import org.springframework.stereotype.Component;
 import podbielski.genuitek.bookstore.domain.Book;
+import podbielski.genuitek.bookstore.web.datatable.BookTableModel;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -23,12 +24,13 @@ import java.util.List;
 public class BookControllerJFO extends BookController {
 
 
-    //TODO JFO - implemnetacja i powiązanie z widokiem
+    //TODO JFO - implemnetacja i wycigniecie zmiennej z widoku
     public List<Book> getAllOlderThanYear(){
-//        if(this.getYear()!=0) {
-//            return bookService.findAllOlderThanYear(this.getYear());
-//        }
-//        return this.getBooks();
+//        return bookService.findAllOlder... ;
         return null;
+    }
+
+    public void filterBooksByYear(){
+        //TODO JFO Implementacja: bookDataModel musi zostac ustawiony na to co zwroci ≥getAllOlderThanYear< czyli na ksiazki przefiltrowane po roku
     }
 }
