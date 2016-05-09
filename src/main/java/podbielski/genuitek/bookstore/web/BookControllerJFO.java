@@ -1,7 +1,10 @@
 package podbielski.genuitek.bookstore.web;
 
+import org.springframework.stereotype.Component;
 import podbielski.genuitek.bookstore.domain.Book;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import java.util.List;
 
 /**
@@ -14,6 +17,9 @@ import java.util.List;
  * Historia zmian: <br/>
  * 09/05/16 - mpodbielski - utworzenie klasy
  */
+@ManagedBean
+@ViewScoped
+@Component
 public class BookControllerJFO extends BookController {
 
 

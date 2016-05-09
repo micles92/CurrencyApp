@@ -16,7 +16,11 @@
 
         <h:form id="form">
 
-                <p:dataTable id="bookTable" var="book" value="#{bookControllerJFO.allOlderThanYearKSI}"
+            <p:inputText value="#{bookControllerJFO.year}"></p:inputText>
+            <p:commandButton value="Find older than year" actionListener="#{bookControllerJFO.getAllOlderThanYear}"
+                             update="bookTable"/>
+
+                <p:dataTable id="bookTable" var="book" value="#{bookControllerJFO.bookTableModel}"
                              selection="#{bookControllerJFO.selectedBook}" selectionMode="single"
                              rowKey="#{book.id}" paginator="true" rows="10">
                     <p:ajax event="rowSelect" listener="#{bookControllerJFO.onRowSelect}"
@@ -49,17 +53,13 @@
                              value="Show Book Details in Growl"/>
 
 
-            <p:inputText value="#{bookControllerJFO.year}"></p:inputText>
-            <p:commandButton value="Find older than year" actionListener="#{bookControllerJFO.getAllOlderThanYear}"
-                             update="bookTable"/>
+
         </h:form>
         <h:form id="form2">
             <p:dialog id="dialog" showEffect="bounce" hideEffect="slide"
                       header="Book Details: #{bookControllerJFO.selectedBook.title}" modal="false"
-                      widgetVar="bookDialog" resizable="false"
-            >
+                      widgetVar="bookDialog" resizable="false">
                 BOOK DETAILS:
-
                 <h:outputText value="#{bookControllerJFO.selectionText}"/>
             </p:dialog>
 

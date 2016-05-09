@@ -24,12 +24,10 @@ import java.util.List;
  * @date 7/10/13
  */
 
-@ManagedBean
-@ViewScoped
-@Component
+
 public class BookController {
 
-	@Autowired private BookService bookService;
+	@Autowired protected BookService bookService;
 
     @Autowired protected AuthorService authorService;
 
@@ -56,10 +54,6 @@ public class BookController {
     public BookController() {
     }
 
-	public List<Book> getBooks(){
-		return bookService.findAllBooks();
-	}
-
 	public List<Author> getAuthors() {
         return authorService.findByBook(getSelectedBook());
     }
@@ -77,7 +71,6 @@ public class BookController {
     }
 
     //Methods
-
    /*
     *  Gets the selected book's full text (title + year) and appends related
     *  authors' full names

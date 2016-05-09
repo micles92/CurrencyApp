@@ -17,7 +17,7 @@
 						http://www.springframework.org/schema/data/jpa
 						http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 	
-	<jpa:repositories base-package="podbielski.genuitek" />
+	<jpa:repositories base-package="podbielski.genuitek.bookstore.repository" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
