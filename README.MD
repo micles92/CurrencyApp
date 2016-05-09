@@ -24,6 +24,12 @@ mvn eclipse:eclipse
 
 -----------------------------------
 Zadania dostepne sa w pliku TODO.MD
-
 -----------------------------------
+
+** BRANCHE **
+* Stage1 - podstawowa aplikacja: master-detail, filtrowanie
+
+* Stage2 - Własne respozytoria + testy
+
+...
 

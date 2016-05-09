@@ -52,6 +52,7 @@
 		<property name="url" value="${jdbc.url.test}"></property>
 		<property name="username" value="${jdbc.username}"></property>
 		<property name="password" value="${jdbc.password}"></property>
+
 	</bean>
    
    

@@ -13,7 +13,7 @@ podbielski.genuitek.bookstore.web.TestBookController.getAllOlderThanYear
 
 3. Zaimplementować metode filrowania po roku w managerach
 
-podbielski.genuitek.bookstore.services.TestBookService
+podbielski.genuitek.bookstore.service.TestBookService
 
 4. Napisac testy dla mechanizmu filtrowania na poziomie managera
 

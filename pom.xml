@@ -84,25 +84,25 @@
                     </scanTargetPatterns>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.7</version>
-                <executions>
-                    <execution>
-                        <id>copy-bookstore-lib-to-war</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target name="copy bookstore-lib files to web project">
-                                <copy file="${project.basedir}/lib/bookstore-lib.jar" tofile="${project.build.directory}/${project.build.finalName}/WEB-INF/lib/bookstore-lib.jar" />
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-antrun-plugin</artifactId>-->
+                <!--<version>1.7</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>copy-bookstore-lib-to-war</id>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>run</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<target name="copy bookstore-lib files to web project">-->
+                                <!--<copy file="${project.basedir}/lib/bookstore-lib.jar" tofile="${project.build.directory}/${project.build.finalName}/WEB-INF/lib/bookstore-lib.jar" />-->
+                            <!--</target>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 
@@ -142,13 +142,13 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>podbielski.sygnity</groupId>
-            <artifactId>bookstore-lib</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/bookstore-lib.jar</systemPath>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>podbielski.sygnity</groupId>-->
+            <!--<artifactId>bookstore-lib</artifactId>-->
+            <!--<version>1.0-SNAPSHOT</version>-->
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${project.basedir}/lib/bookstore-lib.jar</systemPath>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>junit</groupId>

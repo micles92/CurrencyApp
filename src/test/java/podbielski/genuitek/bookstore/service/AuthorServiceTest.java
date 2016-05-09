@@ -1,4 +1,4 @@
-package podbielski.genuitek.bookstore.services;
+package podbielski.genuitek.bookstore.service;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,7 +8,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import podbielski.genuitek.bookstore.domain.Author;
 import podbielski.genuitek.bookstore.domain.Book;
-import podbielski.genuitek.bookstore.services.AuthorService;
 
 import java.util.List;
 

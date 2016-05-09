@@ -1,4 +1,4 @@
-package podbielski.genuitek.bookstore.services;
+package podbielski.genuitek.bookstore.service;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import podbielski.genuitek.bookstore.domain.Book;
-import podbielski.genuitek.bookstore.services.BookService;
 
 import java.util.List;
 
@@ -30,5 +29,15 @@ public class BookServiceTest
 		for (Book book : books) {
 			System.err.println(book.toString());
 		}
+	}
+
+	@Test
+	public void testFindAllOlderThanYear() {
+		List<Book> books = bookService.findAllOlderThanYear(2004);
+		Assert.assertNotNull(books);
+		for (Book book : books) {
+			System.err.println(book.toString());
+		}
+
 	}
 }

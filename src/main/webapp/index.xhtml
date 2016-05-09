@@ -16,10 +16,10 @@
 
         <h:form id="form">
 
-                <p:dataTable id="bookTable" var="book" value="#{testBookController.allOlderThanYearKSI}"
-                             selection="#{testBookController.selectedBook}" selectionMode="single"
+                <p:dataTable id="bookTable" var="book" value="#{bookControllerJFO.allOlderThanYearKSI}"
+                             selection="#{bookControllerJFO.selectedBook}" selectionMode="single"
                              rowKey="#{book.id}" paginator="true" rows="10">
-                    <p:ajax event="rowSelect" listener="#{testBookController.onRowSelect}"
+                    <p:ajax event="rowSelect" listener="#{bookControllerJFO.onRowSelect}"
                             update=":form:authorTable "/>
 
                     <p:column headerText="ID">
@@ -33,7 +33,7 @@
                     </p:column>
                 </p:dataTable>
 
-                <p:dataTable id="authorTable" var="author" value="#{testBookController.authors}">
+                <p:dataTable id="authorTable" var="author" value="#{bookControllerJFO.authors}">
                     <p:column headerText="Authors">
                         <h:outputText value="#{author.id}"/>
                         -
@@ -41,30 +41,26 @@
                     </p:column>
                 </p:dataTable>
 
-
-
-
-
             <p:spacer height="20px"/>
 
             <p:commandButton id="button1" value="Show Book Details" update=":form2:dialog"
                              oncomplete="bookDialog.show();"/>
-            <p:commandButton id="button2" update=":growl:growl" actionListener="#{testBookController.showInGrowl}"
+            <p:commandButton id="button2" update=":growl:growl" actionListener="#{bookControllerJFO.showInGrowl}"
                              value="Show Book Details in Growl"/>
 
 
-            <p:inputText value="#{testBookController.year}"></p:inputText>
-            <p:commandButton value="Find older than year" actionListener="#{testBookController.getAllOlderThanYearKSI}"
+            <p:inputText value="#{bookControllerJFO.year}"></p:inputText>
+            <p:commandButton value="Find older than year" actionListener="#{bookControllerJFO.getAllOlderThanYear}"
                              update="bookTable"/>
         </h:form>
         <h:form id="form2">
             <p:dialog id="dialog" showEffect="bounce" hideEffect="slide"
-                      header="Book Details: #{testBookController.selectedBook.title}" modal="false"
+                      header="Book Details: #{bookControllerJFO.selectedBook.title}" modal="false"
                       widgetVar="bookDialog" resizable="false"
             >
                 BOOK DETAILS:
 
-                <h:outputText value="#{testBookController.selectionText}"/>
+                <h:outputText value="#{bookControllerJFO.selectionText}"/>
             </p:dialog>
 
 
