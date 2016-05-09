@@ -31,7 +31,7 @@ public class BookRepositoryImpl implements BookRepositoryCustom {
     @Override
     public List<Book> findLatestByTitleWithJPQLQuery(String title) {
         Query query =
-                entityManager.createNativeQuery("SELECT b FROM Book WHERE b.title like lower(concat('%',:title,'%'))", Book.class);
+                entityManager.createNamedQuery("Book.findByTitle", Book.class);
         query.setParameter("title", title);
         return query.getResultList();
     }

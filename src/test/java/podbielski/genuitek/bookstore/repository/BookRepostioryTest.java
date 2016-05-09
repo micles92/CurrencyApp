@@ -65,7 +65,7 @@ public class BookRepostioryTest {
     @Test
     public void testFindByTitle() {
         prepareBooks(3);
-        List<Book> result = bookRepository.findLatestByTitleWithJPQLQuery("3");
+        List<Book> result = bookRepository.findLatestByTitleWithJPQLQuery("2");
         Assert.assertNotNull(result);
         Assert.assertEquals("find by title", 1, result.size());
 

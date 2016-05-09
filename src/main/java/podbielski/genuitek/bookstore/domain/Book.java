@@ -19,6 +19,7 @@ import java.util.List;
         //FIXME JFO brak parametrow przekazywanych do zapytan!!!
         @NamedQuery(name = "Book.findAllOrderedByYear", query = "SELECT b FROM Book b ORDER BY b.year ASC"),
         @NamedQuery(name = "Book.findAllOrderedByTitle", query = "SELECT b FROM Book b ORDER BY b.title ASC"),
+        @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title like lower(concat('%',:title,'%')) ")
 
         })
 public class Book {
