@@ -30,9 +30,9 @@ import java.util.Random;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="classpath:spring/applicationContext-test.xml")
+@ContextConfiguration(locations = "classpath:spring/applicationContext-test.xml")
 @Transactional
-@TransactionConfiguration(defaultRollback=true)
+@TransactionConfiguration(defaultRollback = true)
 public class BookRepostioryTest {
 
     private EmbeddedDatabase db;
@@ -41,26 +41,31 @@ public class BookRepostioryTest {
     private BookRepository bookRepository;
 
     //TODO JFO
-//    @Test
-    public void testFindAllOrderedByYear(){
+    @Test
+    public void testFindAllOrderedByYear() {
+        prepareBooks(10);
+        List<Book> books = bookRepository.findAllOrderedByYear();
+        Assert.assertNotNull(books);
 
     }
 
     //TODO JFO
-//    @Test
-    public void testFindAllOrderedByTitle(){
-
+    @Test
+    public void testFindAllOrderedByTitle() {
+        prepareBooks(40);
+        List<Book> books = bookRepository.findAllOrderedByTitle();
+        Assert.assertNotNull(books);
     }
 
     //FIXME JFO
-    @Test
+    // @Test
     public void testFindAllOlderThanYear() {
         prepareBooks(3);
         List<Book> books = bookRepository.findOlderThanYear(2004);
         Assert.assertNotNull(books);
     }
 
-    private void prepareBooks(int count){
+    private void prepareBooks(int count) {
         Random rand = new Random();
         int min = 1900;
         int max = 2016;

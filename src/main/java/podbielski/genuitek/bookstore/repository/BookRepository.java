@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package podbielski.genuitek.bookstore.repository;
 
@@ -14,9 +14,10 @@ import java.util.List;
  * @date 7/10/13
  */
 @Repository
-public interface BookRepository extends JpaRepository<Book, Integer>
-{
+public interface BookRepository extends JpaRepository<Book, Integer> {
+    List<Book> findOlderThanYear(int year);
 
-	List<Book> findOlderThanYear(int year);
+    List<Book> findAllOrderedByYear();
 
+    List<Book> findAllOrderedByTitle();
 }
