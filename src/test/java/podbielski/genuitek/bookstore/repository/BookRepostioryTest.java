@@ -44,7 +44,6 @@ public class BookRepostioryTest {
         List<Book> result = bookRepository.findAllOrderedByYear();
         Assert.assertNotNull(result);
         Assert.assertEquals("find all ordered by year", 3, result.size());
-
     }
 
     @Test
@@ -55,7 +54,7 @@ public class BookRepostioryTest {
     }
 
     //FIXME JFO
-    // @Test
+    @Test
     public void testFindAllOlderThanYear() {
         prepareBooks(3);
         List<Book> books = bookRepository.findOlderThanYear(2004);
@@ -68,7 +67,6 @@ public class BookRepostioryTest {
         List<Book> result = bookRepository.findLatestByTitleWithJPQLQuery("2");
         Assert.assertNotNull(result);
         Assert.assertEquals("find by title", 1, result.size());
-
     }
 
     private void prepareBooks(int count) {
@@ -81,5 +79,4 @@ public class BookRepostioryTest {
             bookRepository.save(book);
         }
     }
-
 }

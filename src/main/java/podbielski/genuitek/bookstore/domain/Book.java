@@ -15,13 +15,13 @@ import java.util.List;
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "Book.findOlderThanYear",
-                query = "SELECT b FROM Book b WHERE b.year >= ? ORDER BY b.year"),
+                query = "SELECT b FROM Book b WHERE b.year >= :year ORDER BY b.year"),
         //FIXME JFO brak parametrow przekazywanych do zapytan!!!
-        @NamedQuery(name = "Book.findAllOrderedByYear", query = "SELECT b FROM Book b ORDER BY b.year ASC"),
+        @NamedQuery(name = "Book.findAllOrderedByYear", query = "SELECT b FROM Book b ORDER BY b.year"),
         @NamedQuery(name = "Book.findAllOrderedByTitle", query = "SELECT b FROM Book b ORDER BY b.title ASC"),
         @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title like lower(concat('%',:title,'%')) ")
 
-        })
+})
 public class Book {
 
     @Id

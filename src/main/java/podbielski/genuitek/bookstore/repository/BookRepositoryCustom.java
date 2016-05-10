@@ -14,7 +14,7 @@ import java.util.List;
  * @date 7/10/13
  */
 @Repository
-public interface BookRepositoryCustom  {
+public interface BookRepositoryCustom {
 
     List<Book> findOlderThanYear(int year);
 
@@ -23,7 +23,4 @@ public interface BookRepositoryCustom  {
     List<Book> findAllOrderedByTitle();
 
     List<Book> findLatestByTitleWithJPQLQuery(String title);
-
-
-
 }
