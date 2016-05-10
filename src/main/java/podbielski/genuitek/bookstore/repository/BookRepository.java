@@ -14,5 +14,4 @@ import podbielski.genuitek.bookstore.domain.Book;
  */
 @Repository
 public interface BookRepository extends JpaRepository<Book, Integer>, BookRepositoryCustom{
-
 }

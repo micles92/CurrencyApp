@@ -19,8 +19,8 @@ import java.util.List;
         @NamedQuery(name = "Book.findAllOrderedByYear", query = "SELECT b FROM Book b ORDER BY b.year"),
         @NamedQuery(name = "Book.findAllOrderedByTitle", query = "SELECT b FROM Book b ORDER BY b.title ASC"),
         @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title like lower(concat('%',:title,'%')) ")
-
 })
+
 public class Book {
 
     @Id
@@ -83,6 +83,5 @@ public class Book {
     public String toString() {
         return title + ", " + year + ": ";
     }
-
 
 }

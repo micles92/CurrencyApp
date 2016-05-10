@@ -5,7 +5,6 @@ package podbielski.genuitek.bookstore.web;
 
 import org.primefaces.event.SelectEvent;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import podbielski.genuitek.bookstore.domain.Author;
 import podbielski.genuitek.bookstore.domain.Book;
 import podbielski.genuitek.bookstore.repository.BookRepository;
@@ -15,8 +14,6 @@ import podbielski.genuitek.bookstore.web.datatable.BookTableModel;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.util.List;
 import java.util.Random;
@@ -26,7 +23,6 @@ import java.util.Random;
  * @author mateusz.podbielski@fgenuitek.com
  * @date 7/10/13
  */
-
 
 public class BookController {
 
@@ -44,7 +40,6 @@ public class BookController {
     //zmienna ustawiająca warunek od roku
     protected int year;
 
-
     // Konstruktor domyslny
     public BookController() {
     }
@@ -52,7 +47,7 @@ public class BookController {
     // Inicjalizacja bean'a
     @PostConstruct
     public void initBean() {
-        prepareBooks(8);
+        // prepareBooks(8);
         // Poczatkowa wartosc bookTableModel ustawiona na wszystkie ksiazki
         this.bookTableModel = new BookTableModel(bookService.findAllBooks());
     }
@@ -116,6 +111,5 @@ public class BookController {
             bookRepository.save(book);
         }
     }
-
-
 }
+

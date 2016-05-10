@@ -8,8 +8,7 @@ import podbielski.genuitek.bookstore.web.datatable.BookTableModel;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Copyright (C) 2016 , Sygnity SA. Wszystkie prawa zastrzeżone.
@@ -26,11 +25,9 @@ import java.util.Random;
 @Component
 public class BookControllerJFO extends BookController {
 
-
     public List<Book> getAllOlderThanYear() {
         return bookService.findAllOlderThanYear(this.year);
     }
-
 
     public void filterBooksByYear() {
         this.bookTableModel = new BookTableModel(bookService.findAllOlderThanYear(this.year));
@@ -38,5 +35,9 @@ public class BookControllerJFO extends BookController {
 
     public void getAllBooks() {
         this.bookTableModel = new BookTableModel(bookService.findAllBooks());
+    }
+
+    public void sortByTitle() {
+        this.bookTableModel = new BookTableModel(bookService.findAllOrderedByTitle());
     }
 }

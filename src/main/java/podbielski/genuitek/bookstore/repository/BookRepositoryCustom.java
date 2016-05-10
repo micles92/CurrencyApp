@@ -23,4 +23,5 @@ public interface BookRepositoryCustom {
     List<Book> findAllOrderedByTitle();
 
     List<Book> findLatestByTitleWithJPQLQuery(String title);
+    
 }

@@ -7,7 +7,6 @@
                 xmlns:p="http://primefaces.org/ui" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xsi:schemaLocation="http://java.sun.com/jsf/html ">
 
-
     <ui:define name="content">
         <!--TODO:-->
         <!--1. <label> pobierajacy zmienna z properties - wyswietla tekst z polskimi znakami-->
@@ -21,7 +20,8 @@
                              update="bookTable"/>
             <p:commandButton value="Show all" actionListener="#{bookControllerJFO.getAllBooks}"
                              update="bookTable"/>
-
+            <p:commandButton value="Sort by title" actionListener="#{bookControllerJFO.sortByTitle}"
+                             update="bookTable"/>
 
             <p:dataTable id="bookTable" var="book" value="#{bookControllerJFO.bookTableModel}"
                          selection="#{bookControllerJFO.selectedBook}" selectionMode="single"
@@ -32,10 +32,11 @@
                 <p:column headerText="ID">
                     <h:outputText value="#{book.id}"/>
                 </p:column>
+
                 <p:column headerText="Title">
                     <h:outputText value="#{book.title}"/>
                 </p:column>
-                <p:column headerText="Year">
+                <p:column headerText="Year" sortBy="#{book.year}">
                     <h:outputText value="#{book.year}"/>
                 </p:column>
             </p:dataTable>
@@ -55,7 +56,6 @@
             <p:commandButton id="button2" update=":growl:growl" actionListener="#{bookControllerJFO.showInGrowl}"
                              value="Show Book Details in Growl"/>
 
-
         </h:form>
         <h:form id="form2">
             <p:dialog id="dialog" showEffect="bounce" hideEffect="slide"
@@ -64,7 +64,6 @@
                 BOOK DETAILS:
                 <h:outputText value="#{bookControllerJFO.selectionText}"/>
             </p:dialog>
-
 
         </h:form>
     </ui:define>

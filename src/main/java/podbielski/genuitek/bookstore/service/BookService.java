@@ -29,4 +29,9 @@ public class BookService {
     public List<Book> findAllOlderThanYear(int year) {
         return bookRepository.findOlderThanYear(year);
     }
+
+    public List<Book> findAllOrderedByTitle() {
+        return bookRepository.findAllOrderedByTitle();
+    }
+
 }
