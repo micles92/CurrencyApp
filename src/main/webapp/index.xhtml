@@ -19,31 +19,34 @@
             <p:inputText value="#{bookControllerJFO.year}"></p:inputText>
             <p:commandButton value="Find older than year" actionListener="#{bookControllerJFO.filterBooksByYear}"
                              update="bookTable"/>
+            <p:commandButton value="Show all" actionListener="#{bookControllerJFO.getAllBooks}"
+                             update="bookTable"/>
 
-                <p:dataTable id="bookTable" var="book" value="#{bookControllerJFO.bookTableModel}"
-                             selection="#{bookControllerJFO.selectedBook}" selectionMode="single"
-                             rowKey="#{book.id}" paginator="true" rows="10">
-                    <p:ajax event="rowSelect" listener="#{bookControllerJFO.onRowSelect}"
-                            update=":form:authorTable "/>
 
-                    <p:column headerText="ID">
-                        <h:outputText value="#{book.id}"/>
-                    </p:column>
-                    <p:column headerText="Title">
-                        <h:outputText value="#{book.title}"/>
-                    </p:column>
-                    <p:column headerText="Year">
-                        <h:outputText value="#{book.year}"/>
-                    </p:column>
-                </p:dataTable>
+            <p:dataTable id="bookTable" var="book" value="#{bookControllerJFO.bookTableModel}"
+                         selection="#{bookControllerJFO.selectedBook}" selectionMode="single"
+                         rowKey="#{book.id}" paginator="true" rows="10">
+                <p:ajax event="rowSelect" listener="#{bookControllerJFO.onRowSelect}"
+                        update=":form:authorTable "/>
 
-                <p:dataTable id="authorTable" var="author" value="#{bookControllerJFO.authors}">
-                    <p:column headerText="Authors">
-                        <h:outputText value="#{author.id}"/>
-                        -
-                        <h:outputText value="#{author.fullname}"/>
-                    </p:column>
-                </p:dataTable>
+                <p:column headerText="ID">
+                    <h:outputText value="#{book.id}"/>
+                </p:column>
+                <p:column headerText="Title">
+                    <h:outputText value="#{book.title}"/>
+                </p:column>
+                <p:column headerText="Year">
+                    <h:outputText value="#{book.year}"/>
+                </p:column>
+            </p:dataTable>
+
+            <p:dataTable id="authorTable" var="author" value="#{bookControllerJFO.authors}">
+                <p:column headerText="Authors">
+                    <h:outputText value="#{author.id}"/>
+                    -
+                    <h:outputText value="#{author.fullname}"/>
+                </p:column>
+            </p:dataTable>
 
             <p:spacer height="20px"/>
 
@@ -51,7 +54,6 @@
                              oncomplete="bookDialog.show();"/>
             <p:commandButton id="button2" update=":growl:growl" actionListener="#{bookControllerJFO.showInGrowl}"
                              value="Show Book Details in Growl"/>
-
 
 
         </h:form>

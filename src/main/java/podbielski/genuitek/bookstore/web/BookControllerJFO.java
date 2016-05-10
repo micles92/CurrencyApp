@@ -27,15 +27,16 @@ import java.util.Random;
 public class BookControllerJFO extends BookController {
 
 
-    //TODO JFO - implemnetacja i wycigniecie zmiennej z widoku
     public List<Book> getAllOlderThanYear() {
         return bookService.findAllOlderThanYear(this.year);
     }
 
-    //TODO JFO Implementacja: bookDataModel musi zostac ustawiony na to co zwroci ≥getAllOlderThanYear< czyli na ksiazki przefiltrowane po roku
+
     public void filterBooksByYear() {
         this.bookTableModel = new BookTableModel(bookService.findAllOlderThanYear(this.year));
     }
 
-
+    public void getAllBooks() {
+        this.bookTableModel = new BookTableModel(bookService.findAllBooks());
+    }
 }

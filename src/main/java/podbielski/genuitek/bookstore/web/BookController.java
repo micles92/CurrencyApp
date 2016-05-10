@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package podbielski.genuitek.bookstore.web;
 
@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import podbielski.genuitek.bookstore.domain.Author;
 import podbielski.genuitek.bookstore.domain.Book;
+import podbielski.genuitek.bookstore.repository.BookRepository;
 import podbielski.genuitek.bookstore.service.AuthorService;
 import podbielski.genuitek.bookstore.service.BookService;
 import podbielski.genuitek.bookstore.web.datatable.BookTableModel;
@@ -18,6 +19,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -28,14 +30,18 @@ import java.util.List;
 
 public class BookController {
 
-	@Autowired protected BookService bookService;
-    @Autowired protected AuthorService authorService;
+    @Autowired
+    protected BookService bookService;
+    @Autowired
+    protected AuthorService authorService;
+    @Autowired
+    protected BookRepository bookRepository;
 
     protected BookTableModel bookTableModel;
     protected List<Author> authors;
     protected Book selectedBook;
 
-	//zmienna ustawiająca warunek od roku
+    //zmienna ustawiająca warunek od roku
     protected int year;
 
 
@@ -45,12 +51,13 @@ public class BookController {
 
     // Inicjalizacja bean'a
     @PostConstruct
-    public void initBean(){
+    public void initBean() {
+        prepareBooks(8);
         // Poczatkowa wartosc bookTableModel ustawiona na wszystkie ksiazki
         this.bookTableModel = new BookTableModel(bookService.findAllBooks());
     }
 
-	public List<Author> getAuthors() {
+    public List<Author> getAuthors() {
         return authorService.findByBook(getSelectedBook());
     }
 
@@ -62,7 +69,7 @@ public class BookController {
         this.selectedBook = selectedBook;
     }
 
-	public BookTableModel getBookTableModel() {
+    public BookTableModel getBookTableModel() {
         return bookTableModel;
     }
 
@@ -79,24 +86,36 @@ public class BookController {
     *  Gets the selected book's full text (title + year) and appends related
     *  authors' full names
     */
-    public String getSelectionText(){
+    public String getSelectionText() {
         StringBuilder sb = null;
-        if(getSelectedBook() != null) {
+        if (getSelectedBook() != null) {
             sb = new StringBuilder(getSelectedBook().toString());
-            for (Author author : authorService.findByBook(getSelectedBook())){
-                sb.append( author.toString() );
+            for (Author author : authorService.findByBook(getSelectedBook())) {
+                sb.append(author.toString());
             }
         }
-        return (null == sb)? "" : sb.toString();
+        return (null == sb) ? "" : sb.toString();
     }
 
-    public void showInGrowl(){
+    public void showInGrowl() {
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage( null, new FacesMessage( "Book Details", getSelectionText() ));
+        context.addMessage(null, new FacesMessage("Book Details", getSelectionText()));
     }
 
     public void onRowSelect(SelectEvent event) {
         authors = authorService.findByBook(getSelectedBook());
     }
+
+    private void prepareBooks(int count) {
+        Random rand = new Random();
+        int min = 1900;
+        int max = 2016;
+
+        for (int i = 0; i < count; i++) {
+            Book book = new Book("Book title " + i, rand.nextInt((max - min) + 1) + min);
+            bookRepository.save(book);
+        }
+    }
+
 
 }
