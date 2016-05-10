@@ -26,30 +26,16 @@ import java.util.Random;
 @Component
 public class BookControllerJFO extends BookController {
 
-    @Autowired
-    BookRepository bookRepository;
 
     //TODO JFO - implemnetacja i wycigniecie zmiennej z widoku
-    private List<Book> getAllOlderThanYear() {
+    public List<Book> getAllOlderThanYear() {
         return bookService.findAllOlderThanYear(this.year);
     }
 
+    //TODO JFO Implementacja: bookDataModel musi zostac ustawiony na to co zwroci ≥getAllOlderThanYear< czyli na ksiazki przefiltrowane po roku
     public void filterBooksByYear() {
-        prepareBooks(10);
-        this.bookTableModel = new BookTableModel(this.getAllOlderThanYear());
-
-        //TODO JFO Implementacja: bookDataModel musi zostac ustawiony na to co zwroci ≥getAllOlderThanYear< czyli na ksiazki przefiltrowane po roku
+        this.bookTableModel = new BookTableModel(bookService.findAllOlderThanYear(this.year));
     }
 
 
-    private void prepareBooks(int count) {
-        Random rand = new Random();
-        int min = 1900;
-        int max = 2016;
-
-        for (int i = 0; i < count; i++) {
-            Book book = new Book("Book title " + i, rand.nextInt((max - min) + 1) + min);
-            bookRepository.save(book);
-        }
-    }
 }
