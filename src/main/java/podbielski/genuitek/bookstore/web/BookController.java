@@ -101,6 +101,10 @@ public class BookController {
         authors = authorService.findByBook(getSelectedBook());
     }
 
+    public int sortByTitle(Object obj1, Object obj2) {
+        return obj1.toString().compareTo(obj2.toString());
+    }
+
     private void prepareBooks(int count) {
         Random rand = new Random();
         int min = 1900;
@@ -111,5 +115,7 @@ public class BookController {
             bookRepository.save(book);
         }
     }
+
+
 }
 

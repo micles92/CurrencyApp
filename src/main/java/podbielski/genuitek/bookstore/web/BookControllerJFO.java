@@ -37,7 +37,4 @@ public class BookControllerJFO extends BookController {
         this.bookTableModel = new BookTableModel(bookService.findAllBooks());
     }
 
-    public void sortByTitle() {
-        this.bookTableModel = new BookTableModel(bookService.findAllOrderedByTitle());
-    }
 }
