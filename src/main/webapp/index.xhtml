@@ -28,11 +28,12 @@
                 <p:ajax event="rowSelect" listener="#{bookControllerJFO.onRowSelect}"
                         update=":form:authorTable "/>
 
-                <p:column headerText="ID">
+                <p:column headerText="ID" sortBy="#{book.id}">
                     <h:outputText value="#{book.id}"/>
                 </p:column>
 
-                <p:column headerText="Title" sortBy="#{book.title}" sortFunction="#{bookControllerJFO.sortByTitle}">
+                <p:column headerText="Title" filterBy="#{book.title}" filterOptions="" sortBy="#{book.title}"
+                          sortFunction="#{bookControllerJFO.sortByTitle}">
                     <h:outputText value="#{book.title}"/>
                 </p:column>
                 <p:column headerText="Year" sortBy="#{book.year}">
