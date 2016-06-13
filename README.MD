@@ -23,6 +23,12 @@ W celu wygenerowania pliku eclipse'a nalezy wywolac w linii polecen:
 mvn eclipse:eclipse
 
 -----------------------------------
+* Technologie *
+-----------------------------------
+
+
+
+-----------------------------------
 Zadania dostepne sa w pliku TODO.MD
 -----------------------------------
 
@@ -32,4 +38,3 @@ Zadania dostepne sa w pliku TODO.MD
 * Stage2 - Własne respozytoria + testy
 
 ...
-
