@@ -46,15 +46,9 @@ Technologie
 * Primefaces 5.1
 
 
-
-
------------------------------------
-Zadania dostepne sa w pliku TODO.MD
------------------------------------
-
 ** BRANCHE **
-* Stage1 - podstawowa aplikacja: master-detail, filtrowanie
 
-* Stage2 - Własne respozytoria + testy
+* master - podstawowa aplikacja: master-detail, filtrowanie, repozytoria, testy
 
-...
+* spring4 - TODO MLE/JFO - spring 4, Servlet 3.1, adnotacje
+
