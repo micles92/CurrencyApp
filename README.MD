@@ -50,5 +50,4 @@ Technologie
 
 * master - podstawowa aplikacja: master-detail, filtrowanie, repozytoria, testy
 
-* spring4 - TODO MLE/JFO - spring 4, Servlet 3.1, adnotacje
-
+* spring4 - TODO MLE/JFO - Java 1.8, spring 4, Servlet 3.1, adnotacje
