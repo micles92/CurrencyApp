@@ -25,16 +25,10 @@ import java.util.*;
 @Component
 public class BookControllerJFO extends BookController {
 
-    public List<Book> getAllOlderThanYear() {
-        return bookService.findAllOlderThanYear(this.year);
-    }
+    public List<Book> getAllOlderThanYear() { return null;}
 
-    public void filterBooksByYear() {
-        this.bookTableModel = new BookTableModel(bookService.findAllOlderThanYear(this.year));
-    }
+    public void filterBooksByYear() {}
 
-    public void getAllBooks() {
-        this.bookTableModel = new BookTableModel(bookService.findAllBooks());
-    }
+    public void getAllBooks() {}
 
 }

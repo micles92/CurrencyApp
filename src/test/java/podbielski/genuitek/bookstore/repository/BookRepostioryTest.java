@@ -37,36 +37,24 @@ public class BookRepostioryTest {
     @Autowired
     private BookRepository bookRepository;
 
-    //TODO JFO
     @Test
     public void testFindAllOrderedByYear() {
         prepareBooks(3);
-        List<Book> result = bookRepository.findAllOrderedByYear();
-        Assert.assertNotNull(result);
-//        Assert.assertEquals("find all ordered by year", 3, result.size());
     }
 
     @Test
     public void testFindAllOrderedByTitle() {
         prepareBooks(3);
-        List<Book> books = bookRepository.findAllOrderedByTitle();
-        Assert.assertNotNull(books);
     }
 
-    //FIXME JFO
     @Test
     public void testFindAllOlderThanYear() {
         prepareBooks(3);
-        List<Book> books = bookRepository.findOlderThanYear(2004);
-        Assert.assertNotNull(books);
     }
 
     @Test
     public void testFindByTitle() {
         prepareBooks(3);
-        List<Book> result = bookRepository.findLatestByTitleWithJPQLQuery("2");
-        Assert.assertNotNull(result);
-//        Assert.assertEquals("find by title", 1, result.size());
     }
     
 
